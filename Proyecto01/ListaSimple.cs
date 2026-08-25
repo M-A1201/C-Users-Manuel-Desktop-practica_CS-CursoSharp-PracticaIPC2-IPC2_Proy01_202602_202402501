@@ -55,4 +55,50 @@ class ListaSimple
             actual = actual.Siguiente;
         }
     }
+
+    // Método para buscar si un dato existe en la lista
+    public bool Buscar(object dato)
+    {
+        Nodo actual = this.cabeza;
+
+        while (actual != null)
+        {
+            if (actual.Dato.Equals(dato))
+            {
+                return true; // Encontrado
+            }
+            actual = actual.Siguiente;
+        }
+
+        return false; // No encontrado
+    }
+
+    // Método para eliminar la primera ocurrencia de un dato
+    public bool Eliminar(object dato)
+    {
+        if (this.cabeza == null) return false;
+
+        // Caso 1: El dato a eliminar está en la cabeza
+        if (this.cabeza.Dato.Equals(dato))
+        {
+            this.cabeza = this.cabeza.Siguiente;
+            this.contador--;
+            return true;
+        }
+
+        // Caso 2: El dato está en el cuerpo o al final
+        Nodo actual = this.cabeza;
+        while (actual.Siguiente != null)
+        {
+            if (actual.Siguiente.Dato.Equals(dato))
+            {
+                actual.Siguiente = actual.Siguiente.Siguiente;
+                this.contador--;
+                return true;
+            }
+            actual = actual.Siguiente;
+        }
+
+        return false;
+    }
 }
