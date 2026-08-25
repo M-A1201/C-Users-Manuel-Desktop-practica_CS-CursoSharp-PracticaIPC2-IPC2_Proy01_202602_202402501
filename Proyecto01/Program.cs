@@ -3,9 +3,16 @@ class Program
 {
     static void Main(string[]args)
     {
-        Nodo nodo1=new Nodo("verificando que funcione la clase nodo");
-        Console.WriteLine("Dato del nodo: " + nodo1
-        .Dato);
-         Console.WriteLine("Siguiente nodo: " + (nodo1.Siguiente == null ? "null" : "existe"));
-    }
+      ListaSimple lista1 = new ListaSimple();
+
+            // Insertamos datos de prueba
+            lista1.Agregar("Guatemala");
+            lista1.Agregar("Escuintla");
+            lista1.Agregar("Quetzaltenango");
+
+            // Imprimimos el contenido y el contador
+            Console.WriteLine("--- Elementos en la Lista ---");
+            lista1.Mostrar();
+
+            Console.WriteLine("\nTotal de elementos: " + lista1.Contador);  }
 }
