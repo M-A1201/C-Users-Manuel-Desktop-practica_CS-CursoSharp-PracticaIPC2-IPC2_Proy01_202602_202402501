@@ -1,7 +1,5 @@
 using System;
 
-namespace Proyecto01
-{
     class ListaDoble
     {
         // Atributos privados para controlar el inicio, fin y tamaño de la lista
@@ -45,9 +43,30 @@ namespace Proyecto01
             this.contador++;
         }
 
+        // Recorrido desde la cabeza hacia la cola (inicio a fin)
+        public void MostrarAdelante()
+        {
+            NodoDoble actual = this.cabeza;
+            while (actual != null)
+            {
+                Console.WriteLine("- " + actual.Dato);
+                actual = actual.Siguiente;
+            }
+        }
+
+        // Recorrido desde la cola hacia la cabeza (fin a inicio)
+        public void MostrarAtras()
+        {
+            NodoDoble actual = this.cola;
+            while (actual != null)
+            {
+                Console.WriteLine("- " + actual.Dato);
+                actual = actual.Anterior;
+            }
+        }
+
 
 
 
 
     }
-}

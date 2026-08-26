@@ -1,5 +1,5 @@
-namespace Proyecto01
-{
+using System;
+
     class NodoDoble
     {
         // Atributos privados para el manejo del dato y punteros doblemente enlazados
@@ -35,4 +35,3 @@ namespace Proyecto01
             set { anterior = value; }
         }
     }
-}
