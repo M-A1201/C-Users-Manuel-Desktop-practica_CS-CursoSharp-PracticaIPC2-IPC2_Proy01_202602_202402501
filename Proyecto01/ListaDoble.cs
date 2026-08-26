@@ -22,5 +22,32 @@ namespace Proyecto01
         {
             get { return contador; }
         }
+
+// Método para agregar un elemento al final de la lista doble
+        public void Agregar(object dato)
+        {
+            NodoDoble nuevo = new NodoDoble(dato);
+
+            // Si la lista está vacía, el nuevo nodo es tanto la cabeza como la cola
+            if (this.cabeza == null)
+            {
+                this.cabeza = nuevo;
+                this.cola = nuevo;
+            }
+            else
+            {
+                // Conectamos la cola actual con el nuevo nodo y viceversa
+                this.cola.Siguiente = nuevo;
+                nuevo.Anterior = this.cola;
+                this.cola = nuevo; // La cola pasa a ser el nuevo nodo
+            }
+
+            this.contador++;
+        }
+
+
+
+
+
     }
 }
