@@ -14,5 +14,25 @@ namespace Proyecto01
             this.siguiente = null;
             this.anterior = null;
         }
+        // Propiedad para obtener y modificar el valor almacenado
+        public object Dato
+        {
+            get { return dato; }
+            set { dato = value; }
+        }
+
+        // Propiedad para obtener y modificar la referencia al siguiente nodo
+        public NodoDoble Siguiente
+        {
+            get { return siguiente; }
+            set { siguiente = value; }
+        }
+
+        // Propiedad para obtener y modificar la referencia al nodo anterior
+        public NodoDoble Anterior
+        {
+            get { return anterior; }
+            set { anterior = value; }
+        }
     }
 }
