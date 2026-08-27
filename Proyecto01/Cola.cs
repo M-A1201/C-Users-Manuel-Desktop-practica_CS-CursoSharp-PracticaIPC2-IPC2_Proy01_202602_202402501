@@ -1,7 +1,6 @@
 using System;
 
-namespace Proyecto01
-{
+
     class Cola
     {
         private ListaDoble lista;
@@ -28,4 +27,3 @@ namespace Proyecto01
             lista.MostrarAdelante();
         }
     }
-}
