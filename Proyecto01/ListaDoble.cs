@@ -15,6 +15,13 @@ class ListaDoble
         this.contador = 0;
     }
 
+
+    // Propiedad para que el Graficador lea la cabeza
+public NodoDoble Cabeza
+{
+    get { return cabeza; }
+}
+
     // Propiedad de solo lectura para obtener el total de elementos
     public int Contador
     {

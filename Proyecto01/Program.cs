@@ -22,7 +22,8 @@ namespace Proyecto01
                 Console.WriteLine("2. Gestionar Lista Doble (Buscar/Eliminar)");
                 Console.WriteLine("3. Probador de Pila (LIFO)");
                 Console.WriteLine("4. Probador de Cola (FIFO)");
-                Console.WriteLine("5. Salir");
+                Console.WriteLine("5. Generar Gráfica Graphviz (Lista Doble)");
+                Console.WriteLine("6. Salir");
                 Console.WriteLine("=======================================");
                 Console.Write("Selecciona una opcion: ");
 
@@ -35,7 +36,7 @@ namespace Proyecto01
                         bool exito = GestorArchivos.CargarArchivo("datos.txt", lista);
                         if (exito)
                         {
-                            Console.WriteLine("\n¡Datos cargados a la Lista Doble con exito!");
+                            Console.WriteLine("\n¡Datos cargados a la Lista Doble con éxito!");
                             lista.MostrarAdelante();
                         }
                         Pausar();
@@ -85,12 +86,18 @@ namespace Proyecto01
                         break;
 
                     case "5":
+                        Console.WriteLine("\n--- Generando Gráfica con Graphviz ---");
+                        Graficador.GenerarGraficaListaDoble(lista, "grafica_lista_doble");
+                        Pausar();
+                        break;
+
+                    case "6":
                         salir = true;
                         Console.WriteLine("\nSaliendo del sistema...");
                         break;
 
                     default:
-                        Console.WriteLine("\nOpcion no valida.");
+                        Console.WriteLine("\nOpción no válida.");
                         Pausar();
                         break;
                 }
