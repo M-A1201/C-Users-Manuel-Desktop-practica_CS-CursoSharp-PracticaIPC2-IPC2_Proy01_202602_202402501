@@ -1,32 +1,35 @@
 ﻿using System;
 
-
+namespace Proyecto01
+{
     class Program
     {
         static void Main(string[] args)
         {
-            // Pruebas de la Lista Simplemente Enlazada (Semana 1)
-            ListaSimple lista1 = new ListaSimple();
-            lista1.Agregar("Guatemala");
-            lista1.Agregar("Escuintla");
-            lista1.Agregar("Quetzaltenango");
+            Console.WriteLine("=== PRUEBA DE PILA (LIFO) ===");
+            Pila pila = new Pila();
+            pila.Push("Tarea 1");
+            pila.Push("Tarea 2");
+            pila.Push("Tarea 3");
+            pila.Mostrar();
 
-            Console.WriteLine("=== PRUEBAS LISTA SIMPLE ===");
-            lista1.Mostrar();
+            Console.WriteLine("\n=== PRUEBA DE COLA (FIFO) ===");
+            Cola cola = new Cola();
+            cola.Encolar("Cliente A");
+            cola.Encolar("Cliente B");
+            cola.Encolar("Cliente C");
+            cola.Mostrar();
 
-            // Pruebas de la Lista Doblemente Enlazada (Semana 2)
-            Console.WriteLine("\n=== PRUEBAS LISTA DOBLE ===");
-            ListaDoble listaDoble = new ListaDoble();
-            listaDoble.Agregar("Manzana");
-            listaDoble.Agregar("Bananos");
-            listaDoble.Agregar("Naranja");
+            Console.WriteLine("\n=== PRUEBA BUSQUEDA Y ELIMINACION EN LISTA DOBLE ===");
+            ListaDoble lista = new ListaDoble();
+            lista.Agregar("Guatemala");
+            lista.Agregar("Quetzaltenango");
+            lista.Agregar("Escuintla");
 
-            Console.WriteLine("\nRecorrido hacia adelante (Cabeza -> Cola):");
-            listaDoble.MostrarAdelante();
-
-            Console.WriteLine("\nRecorrido hacia atras (Cola -> Cabeza):");
-            listaDoble.MostrarAtras();
-
-            Console.WriteLine("\nTotal de elementos en Lista Doble: " + listaDoble.Contador);
+            Console.WriteLine("¿Existe 'Escuintla'?: " + lista.Buscar("Escuintla"));
+            lista.Eliminar("Quetzaltenango");
+            Console.WriteLine("\nLista tras eliminar 'Quetzaltenango':");
+            lista.MostrarAdelante();
         }
     }
+}
