@@ -1,6 +1,7 @@
 using System;
 
-
+namespace Proyecto01
+{
     class Cola
     {
         private ListaDoble lista;
@@ -21,9 +22,32 @@ using System;
             lista.Agregar(dato);
         }
 
-        // Mostrar elementos de la cola (de primero a último ingresado)
+        // Desencolar: remueve el primer elemento ingresado
+        public object Desencolar()
+        {
+            if (lista.Contador == 0)
+            {
+                Console.WriteLine("La Cola está vacía.");
+                return null;
+            }
+
+            // Obtenemos el dato de la cabeza (primer elemento) y lo eliminamos
+            NodoDoble cabeza = lista.Cabeza;
+            object valor = cabeza.Dato;
+            lista.Eliminar(valor.ToString());
+            return valor;
+        }
+
+        // Mostrar elementos de la cola
         public void Mostrar()
         {
             lista.MostrarAdelante();
         }
+
+        // Propiedad pública para permitir la lectura del frente desde el Graficador
+        public NodoDoble Frente
+        {
+            get { return lista.Cabeza; } // El frente de la cola es la cabeza de la lista
+        }
     }
+}

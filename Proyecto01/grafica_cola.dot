@@ -1,0 +1,6 @@
+digraph Cola {
+    rankdir=LR;
+    node [shape=record, style=filled, fillcolor=lightgreen];
+
+    vacio [label="Cola Vacía"];
+}

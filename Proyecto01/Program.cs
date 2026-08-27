@@ -20,10 +20,12 @@ namespace Proyecto01
                 Console.WriteLine("=======================================");
                 Console.WriteLine("1. Cargar datos desde archivo (datos.txt)");
                 Console.WriteLine("2. Gestionar Lista Doble (Buscar/Eliminar)");
-                Console.WriteLine("3. Probador de Pila (LIFO)");
-                Console.WriteLine("4. Probador de Cola (FIFO)");
-                Console.WriteLine("5. Generar Gráfica Graphviz (Lista Doble)");
-                Console.WriteLine("6. Salir");
+                Console.WriteLine("3. Gestionar Pila (Push / Pop)");
+                Console.WriteLine("4. Gestionar Cola (Encolar / Desencolar)");
+                Console.WriteLine("5. Graficar Lista Doble (Graphviz)");
+                Console.WriteLine("6. Graficar Pila (Graphviz)");
+                Console.WriteLine("7. Graficar Cola (Graphviz)");
+                Console.WriteLine("8. Salir");
                 Console.WriteLine("=======================================");
                 Console.Write("Selecciona una opcion: ");
 
@@ -36,7 +38,7 @@ namespace Proyecto01
                         bool exito = GestorArchivos.CargarArchivo("datos.txt", lista);
                         if (exito)
                         {
-                            Console.WriteLine("\n¡Datos cargados a la Lista Doble con éxito!");
+                            Console.WriteLine("\n¡Datos cargados a la Lista Doble con exito!");
                             lista.MostrarAdelante();
                         }
                         Pausar();
@@ -66,32 +68,64 @@ namespace Proyecto01
                         break;
 
                     case "3":
-                        Console.WriteLine("\n--- Apilar Elemento ---");
-                        Console.Write("Ingresa un valor para la Pila: ");
-                        string valorPila = Console.ReadLine();
-                        pila.Push(valorPila);
+                        Console.WriteLine("\n--- Opciones de Pila ---");
+                        Console.WriteLine("1. Apilar (Push)");
+                        Console.WriteLine("2. Desapilar (Pop)");
+                        Console.Write("Selecciona: ");
+                        string subPila = Console.ReadLine();
+                        if (subPila == "1")
+                        {
+                            Console.Write("Ingresa el valor: ");
+                            pila.Push(Console.ReadLine());
+                        }
+                        else if (subPila == "2")
+                        {
+                            pila.Pop();
+                        }
                         Console.WriteLine("\nEstado actual de la Pila:");
                         pila.Mostrar();
                         Pausar();
                         break;
 
                     case "4":
-                        Console.WriteLine("\n--- Encolar Elemento ---");
-                        Console.Write("Ingresa un valor para la Cola: ");
-                        string valorCola = Console.ReadLine();
-                        cola.Encolar(valorCola);
+                        Console.WriteLine("\n--- Opciones de Cola ---");
+                        Console.WriteLine("1. Encolar");
+                        Console.WriteLine("2. Desencolar");
+                        Console.Write("Selecciona: ");
+                        string subCola = Console.ReadLine();
+                        if (subCola == "1")
+                        {
+                            Console.Write("Ingresa el valor: ");
+                            cola.Encolar(Console.ReadLine());
+                        }
+                        else if (subCola == "2")
+                        {
+                            cola.Desencolar();
+                        }
                         Console.WriteLine("\nEstado actual de la Cola:");
                         cola.Mostrar();
                         Pausar();
                         break;
 
                     case "5":
-                        Console.WriteLine("\n--- Generando Gráfica con Graphviz ---");
+                        Console.WriteLine("\n--- Graficando Lista Doble ---");
                         Graficador.GenerarGraficaListaDoble(lista, "grafica_lista_doble");
                         Pausar();
                         break;
 
                     case "6":
+                        Console.WriteLine("\n--- Graficando Pila ---");
+                        Graficador.GenerarGraficaPila(pila, "grafica_pila");
+                        Pausar();
+                        break;
+
+                    case "7":
+                        Console.WriteLine("\n--- Graficando Cola ---");
+                        Graficador.GenerarGraficaCola(cola, "grafica_cola");
+                        Pausar();
+                        break;
+
+                    case "8":
                         salir = true;
                         Console.WriteLine("\nSaliendo del sistema...");
                         break;

@@ -6,6 +6,7 @@ namespace Proyecto01
 {
     class Graficador
     {
+        // 1. Graficar Lista Doble
         public static void GenerarGraficaListaDoble(ListaDoble lista, string nombreArchivo)
         {
             string rutaDot = nombreArchivo + ".dot";
@@ -39,7 +40,80 @@ namespace Proyecto01
             }
 
             contenidoDot += "}\n";
+            File.WriteAllText(rutaDot, contenidoDot);
+            CompilarGraphviz(rutaDot, rutaPng);
+        }
 
+        // 2. Graficar Pila (LIFO - Orientación Vertical)
+        public static void GenerarGraficaPila(Pila pila, string nombreArchivo)
+        {
+            string rutaDot = nombreArchivo + ".dot";
+            string rutaPng = nombreArchivo + ".png";
+
+            string contenidoDot = "digraph Pila {\n";
+            contenidoDot += "    rankdir=TB;\n"; // Top to Bottom (Vertical)
+            contenidoDot += "    node [shape=record, style=filled, fillcolor=lightyellow];\n\n";
+
+            NodoDoble actual = pila.Tope;
+
+            if (actual == null)
+            {
+                contenidoDot += "    vacio [label=\"Pila Vacía\"];\n";
+            }
+            else
+            {
+                int contador = 0;
+                while (actual != null)
+                {
+                    contenidoDot += $"    nodo{contador} [label=\"{actual.Dato}\"];\n";
+                    actual = actual.Siguiente;
+                    contador++;
+                }
+
+                for (int i = 0; i < contador - 1; i++)
+                {
+                    contenidoDot += $"    nodo{i} -> nodo{i + 1};\n";
+                }
+            }
+
+            contenidoDot += "}\n";
+            File.WriteAllText(rutaDot, contenidoDot);
+            CompilarGraphviz(rutaDot, rutaPng);
+        }
+
+        // 3. Graficar Cola (FIFO - Orientación Horizontal)
+        public static void GenerarGraficaCola(Cola cola, string nombreArchivo)
+        {
+            string rutaDot = nombreArchivo + ".dot";
+            string rutaPng = nombreArchivo + ".png";
+
+            string contenidoDot = "digraph Cola {\n";
+            contenidoDot += "    rankdir=LR;\n"; // Left to Right (Horizontal)
+            contenidoDot += "    node [shape=record, style=filled, fillcolor=lightgreen];\n\n";
+
+            NodoDoble actual = cola.Frente;
+
+            if (actual == null)
+            {
+                contenidoDot += "    vacio [label=\"Cola Vacía\"];\n";
+            }
+            else
+            {
+                int contador = 0;
+                while (actual != null)
+                {
+                    contenidoDot += $"    nodo{contador} [label=\"{actual.Dato}\"];\n";
+                    actual = actual.Siguiente;
+                    contador++;
+                }
+
+                for (int i = 0; i < contador - 1; i++)
+                {
+                    contenidoDot += $"    nodo{i} -> nodo{i + 1};\n";
+                }
+            }
+
+            contenidoDot += "}\n";
             File.WriteAllText(rutaDot, contenidoDot);
             CompilarGraphviz(rutaDot, rutaPng);
         }

@@ -1,0 +1,6 @@
+digraph Pila {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightyellow];
+
+    vacio [label="Pila Vacía"];
+}

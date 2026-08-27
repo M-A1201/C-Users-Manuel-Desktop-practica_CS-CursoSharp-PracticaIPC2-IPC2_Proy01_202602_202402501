@@ -15,6 +15,11 @@ class ListaDoble
         this.contador = 0;
     }
 
+// Propiedad para obtener el último nodo (cola/fin) de la lista doble
+public NodoDoble Cola
+{
+    get { return cola; } // Si llamaste 'ultimo' a la variable privada, pon: return ultimo;
+}
 
     // Propiedad para que el Graficador lea la cabeza
 public NodoDoble Cabeza
