@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 
 namespace Proyecto01
 {
@@ -7,43 +6,101 @@ namespace Proyecto01
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("=======================================");
-            Console.WriteLine("    PRUEBAS DE LA SEMANA 3");
-            Console.WriteLine("=======================================\n");
+            ListaDoble lista = new ListaDoble();
+            Pila pila = new Pila();
+            Cola cola = new Cola();
 
-            // 1. Prueba de la estructura Cola (FIFO)
-            Console.WriteLine("--- 1. Prueba de Cola (FIFO) ---");
-            Cola colaPrueba = new Cola();
-            colaPrueba.Encolar("Primer Turno - Cliente A");
-            colaPrueba.Encolar("Segundo Turno - Cliente B");
-            colaPrueba.Encolar("Tercer Turno - Cliente C");
-            
-            Console.WriteLine("Elementos en la Cola:");
-            colaPrueba.Mostrar();
-            Console.WriteLine($"Total en Cola: {colaPrueba.Contador}\n");
+            bool salir = false;
 
-            // 2. Prueba del Gestor de Archivos (Carga Masiva)
-            Console.WriteLine("--- 2. Prueba de Carga desde Archivo ---");
-            ListaDoble listaArchivo = new ListaDoble();
-            string rutaArchivo = "datos.txt";
-
-            bool exito = GestorArchivos.CargarArchivo(rutaArchivo, listaArchivo);
-
-            if (exito)
+            while (!salir)
             {
-                Console.WriteLine($"\n¡Archivo '{rutaArchivo}' cargado exitosamente!");
-                Console.WriteLine("Contenido de la Lista Doble creada desde el archivo:");
-                listaArchivo.MostrarAdelante();
-                Console.WriteLine($"Total elementos leídos: {listaArchivo.Contador}");
-            }
-            else
-            {
-                Console.WriteLine("Ocurrió un problema al intentar leer el archivo.");
-            }
+                Console.Clear();
+                Console.WriteLine("=======================================");
+                Console.WriteLine("   SISTEMA DE ESTRUCTURAS - IPC2");
+                Console.WriteLine("=======================================");
+                Console.WriteLine("1. Cargar datos desde archivo (datos.txt)");
+                Console.WriteLine("2. Gestionar Lista Doble (Buscar/Eliminar)");
+                Console.WriteLine("3. Probador de Pila (LIFO)");
+                Console.WriteLine("4. Probador de Cola (FIFO)");
+                Console.WriteLine("5. Salir");
+                Console.WriteLine("=======================================");
+                Console.Write("Selecciona una opcion: ");
 
-            Console.WriteLine("\n=======================================");
-            Console.WriteLine("    PRUEBAS COMPLETADAS CON ÉXITO");
-            Console.WriteLine("=======================================");
+                string opcion = Console.ReadLine();
+
+                switch (opcion)
+                {
+                    case "1":
+                        Console.WriteLine("\n--- Cargando Archivo ---");
+                        bool exito = GestorArchivos.CargarArchivo("datos.txt", lista);
+                        if (exito)
+                        {
+                            Console.WriteLine("\n¡Datos cargados a la Lista Doble con exito!");
+                            lista.MostrarAdelante();
+                        }
+                        Pausar();
+                        break;
+
+                    case "2":
+                        Console.WriteLine("\n--- Estado de la Lista Doble ---");
+                        lista.MostrarAdelante();
+                        Console.Write("\nIngresa el valor a buscar/eliminar: ");
+                        string busqueda = Console.ReadLine();
+
+                        if (lista.Buscar(busqueda))
+                        {
+                            Console.WriteLine($"\nEl elemento '{busqueda}' EXISTE en la lista.");
+                            Console.Write("¿Deseas eliminarlo? (s/n): ");
+                            if (Console.ReadLine().ToLower() == "s")
+                            {
+                                lista.Eliminar(busqueda);
+                                Console.WriteLine("Elemento eliminado exitosamente.");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine($"\nEl elemento '{busqueda}' NO existe.");
+                        }
+                        Pausar();
+                        break;
+
+                    case "3":
+                        Console.WriteLine("\n--- Apilar Elemento ---");
+                        Console.Write("Ingresa un valor para la Pila: ");
+                        string valorPila = Console.ReadLine();
+                        pila.Push(valorPila);
+                        Console.WriteLine("\nEstado actual de la Pila:");
+                        pila.Mostrar();
+                        Pausar();
+                        break;
+
+                    case "4":
+                        Console.WriteLine("\n--- Encolar Elemento ---");
+                        Console.Write("Ingresa un valor para la Cola: ");
+                        string valorCola = Console.ReadLine();
+                        cola.Encolar(valorCola);
+                        Console.WriteLine("\nEstado actual de la Cola:");
+                        cola.Mostrar();
+                        Pausar();
+                        break;
+
+                    case "5":
+                        salir = true;
+                        Console.WriteLine("\nSaliendo del sistema...");
+                        break;
+
+                    default:
+                        Console.WriteLine("\nOpcion no valida.");
+                        Pausar();
+                        break;
+                }
+            }
+        }
+
+        static void Pausar()
+        {
+            Console.WriteLine("\nPresiona cualquier tecla para continuar...");
+            Console.ReadKey();
         }
     }
 }
