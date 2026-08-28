@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuracion>
+    <listaCiudades>
+        <ciudad>
+            <nombre filas="13" columnas="19">CiudadSitiada</nombre>
+            <fila numero="1">"*******************"</fila>
+            <fila numero="2">"*E               R*"</fila>
+            <fila numero="3">"* *** ******* *** *"</fila>
+            <fila numero="4">"* *** *******     *"</fila>
+            <fila numero="5">"* *** *******  C  *"</fila>
+            <fila numero="6">"* *** *******     *"</fila>
+            <fila numero="7">"*                 *"</fila>
+            <fila numero="8">"* * ***** ******* *"</fila>
+            <fila numero="9">"* * ***** ******* *"</fila>
+            <fila numero="10">"* *  R*** ******* *"</fila>
+            <fila numero="11">"* ******* ******* *"</fila>
+            <fila numero="12">"*E               C*"</fila>
+            <fila numero="13">"*******************"</fila>
+            <unidadMilitar fila="4" columna="16">10</unidadMilitar>
+            <unidadMilitar fila="5" columna="15">10</unidadMilitar>
+            <unidadMilitar fila="5" columna="17">10</unidadMilitar>
+            <unidadMilitar fila="6" columna="16">10</unidadMilitar>
+            <unidadMilitar fila="9" columna="4">150</unidadMilitar>
+        </ciudad>
+    </listaCiudades>
+    <robots>
+        <robot>
+            <nombre tipo="ChapinRescue">robotRescue01</nombre>
+        </robot>
+        <robot>
+            <nombre tipo="ChapinFighter" capacidad="100">robotFighter01</nombre>
+        </robot>
+        <robot>
+            <nombre tipo="ChapinFighter" capacidad="200">robotFighter03</nombre>
+        </robot>
+    </robots>
+</configuracion>

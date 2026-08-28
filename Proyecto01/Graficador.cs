@@ -118,6 +118,85 @@ namespace Proyecto01
             CompilarGraphviz(rutaDot, rutaPng);
         }
 
+// 4. Graficar Matriz de la Ciudad (Mapa 2D)
+public static void GraficarCiudad(Ciudad ciudad, string nombreArchivo = "grafica_ciudad")
+{
+    if (ciudad == null)
+    {
+        Console.WriteLine("\n[Error Graphviz] No hay ninguna ciudad cargada para graficar.");
+        return;
+    }
+
+    string rutaDot = nombreArchivo + ".dot";
+    string rutaPng = nombreArchivo + ".png";
+
+    using (StreamWriter sw = new StreamWriter(rutaDot))
+    {
+        sw.WriteLine("digraph G {");
+        sw.WriteLine("    node [shape=plaintext];");
+        sw.WriteLine($"    label=\"Mapa: {ciudad.Nombre}\";");
+        sw.WriteLine("    tablero [label=<");
+        sw.WriteLine("        <TABLE BORDER=\"1\" CELLBORDER=\"1\" CELLSPACING=\"0\" CELLPADDING=\"4\">");
+
+        for (int f = 0; f < ciudad.Filas; f++)
+        {
+            sw.WriteLine("            <TR>");
+            for (int c = 0; c < ciudad.Columnas; c++)
+            {
+                Casilla casilla = ciudad.Tablero[f, c];
+                string colorBg = "white"; 
+                string texto = " ";
+
+                if (casilla != null)
+                {
+                    if (casilla.CapacidadMilitar > 0)
+                    {
+                        colorBg = "red"; 
+                        texto = casilla.CapacidadMilitar.ToString();
+                    }
+                    else
+                    {
+                        switch (casilla.Tipo)
+                        {
+                            case '*':
+                                colorBg = "black";
+                                break;
+                            case 'E':
+                                colorBg = "green";
+                                texto = "E";
+                                break;
+                            case 'C':
+                                colorBg = "dodgerblue";
+                                texto = "C";
+                                break;
+                            case 'R':
+                                colorBg = "yellow";
+                                texto = "R";
+                                break;
+                            default:
+                                colorBg = "white";
+                                break;
+                        }
+                    }
+                }
+
+                string fontColor = (colorBg == "black") ? "white" : "black";
+                sw.WriteLine($"                <TD BGCOLOR=\"{colorBg}\"><FONT COLOR=\"{fontColor}\"><B>{texto}</B></FONT></TD>");
+            }
+            sw.WriteLine("            </TR>");
+        }
+
+        sw.WriteLine("        </TABLE>");
+        sw.WriteLine("    >];");
+        sw.WriteLine("}");
+    }
+
+    CompilarGraphviz(rutaDot, rutaPng);
+}
+
+
+
+
         private static void CompilarGraphviz(string rutaDot, string rutaPng)
         {
             try
