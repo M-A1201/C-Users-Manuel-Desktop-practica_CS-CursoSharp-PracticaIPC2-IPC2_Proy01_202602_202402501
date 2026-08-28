@@ -2,5 +2,5 @@ digraph Pila {
     rankdir=TB;
     node [shape=record, style=filled, fillcolor=lightyellow];
 
-    nodo0 [label="Maria"];
+    nodo0 [label="Rescate Civil en (11,17)"];
 }

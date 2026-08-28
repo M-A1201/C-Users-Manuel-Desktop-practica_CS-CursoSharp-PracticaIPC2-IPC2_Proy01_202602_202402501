@@ -2,7 +2,7 @@ using System;
 
 namespace Proyecto01
 {
-    class Pila
+   public class Pila
     {
         private ListaDoble lista;
 

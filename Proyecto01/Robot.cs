@@ -1,6 +1,6 @@
 namespace Proyecto01
 {
-    class Robot
+    public class Robot
     {
         public string Nombre { get; set; }
         public string Tipo { get; set; } // "ChapinRescue" o "ChapinFighter"

@@ -1,6 +1,6 @@
 namespace Proyecto01
 {
-    class Ciudad
+    public class Ciudad
     {
         public string Nombre { get; set; }
         public int Filas { get; set; }

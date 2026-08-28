@@ -1,6 +1,6 @@
 using System;
 
-class ListaDoble
+public class ListaDoble
 {
     // Atributos privados para controlar el inicio, fin y tamaño de la lista
     private NodoDoble cabeza;

@@ -1,6 +1,6 @@
 using System;
 
-    class NodoDoble
+    public class NodoDoble
     {
         // Atributos privados para el manejo del dato y punteros doblemente enlazados
         private object dato;

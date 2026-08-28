@@ -1,6 +1,6 @@
 namespace Proyecto01
 {
-    class Casilla
+    public class Casilla
     {
         public int Fila { get; set; }
         public int Columna { get; set; }

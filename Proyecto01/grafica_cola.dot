@@ -2,5 +2,11 @@ digraph Cola {
     rankdir=LR;
     node [shape=record, style=filled, fillcolor=lightgreen];
 
-    nodo0 [label="Fatima"];
+    nodo0 [label="Extracción Recurso en (1,17)"];
+    nodo1 [label="Rescate Civil en (4,15)"];
+    nodo2 [label="Extracción Recurso en (9,5)"];
+    nodo3 [label="Rescate Civil en (11,17)"];
+    nodo0 -> nodo1;
+    nodo1 -> nodo2;
+    nodo2 -> nodo3;
 }
